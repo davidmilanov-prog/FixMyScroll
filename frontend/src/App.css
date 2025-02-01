@@ -15,7 +15,6 @@ html {
 
 /* Global container for home pages */
 .home-container {
-  border-top: 1px solid red;
   background-color: #f9f9f9;
   text-align: left;
   display: flex;
