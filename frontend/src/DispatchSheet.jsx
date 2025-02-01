@@ -471,45 +471,37 @@ const DispatchSheet = () => {
           )
         }
         )}
-
-
       </Box>
 
-
-
-      {/* new box to hold horizontal bar and bottom tabs */}
-      <Box sx={{
-        width: '100%', backgroundColor: 'rgb(250,250,250)', position: 'relative',
-        display: 'block', borderTop: '2px solid rgb(200,200,200)',
-      }}>
-        <Box
+      <Box
+        sx={{
+          width: '100%', backgroundColor: 'rgb(250,250,250)', position: 'relative',
+          display: 'block', borderTop: '2px solid rgb(200,200,200)',
+          display: "flex"
+        }}
+      >
+        <IconButton sx={{ ml: 1, height: '30px' }}>
+          <MenuIcon />
+        </IconButton>
+        <Tabs
+          variant="scrollable"
+          scrollButtons="on"
           sx={{
-            display: "flex"
-          }}
-        >
-          <IconButton sx={{ ml: 1, height: '30px' }}>
-            <MenuIcon />
-          </IconButton>
-          <Tabs
-            variant="scrollable"
-            scrollButtons="on"
-            sx={{
-              borderLeft: '2px solid rgb(200,200,200)',
+            borderLeft: '2px solid rgb(200,200,200)',
+            minHeight: '30px',
+            '& .MuiTab-root': {
               minHeight: '30px',
-              '& .MuiTab-root': {
-                minHeight: '30px',
-                padding: '0 8px'
-              }
-            }}
-            TabIndicatorProps={{ style: { backgroundColor: '#68BC00' } }}
-          >
-            <Tab label="Tab 1" disabled />
-            <Tab label="Tab 2" disabled />
-            <Tab label="Tab 3" disabled />
-            <Tab label="Tab 4" disabled />
-            <Tab label="Tab 5" disabled />
-          </Tabs>
-        </Box>
+              padding: '0 8px'
+            }
+          }}
+          TabIndicatorProps={{ style: { backgroundColor: '#68BC00' } }}
+        >
+          <Tab label="Tab 1" disabled />
+          <Tab label="Tab 2" disabled />
+          <Tab label="Tab 3" disabled />
+          <Tab label="Tab 4" disabled />
+          <Tab label="Tab 5" disabled />
+        </Tabs>
       </Box>
     </Box >
   );
