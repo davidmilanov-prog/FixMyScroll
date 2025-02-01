@@ -46,7 +46,7 @@ function App() {
           </Box>
         </Toolbar>
       </AppBar>
-      <div className="home-container" style={{ paddingTop: '60px' }}>
+      <div className="home-container" >
         <main className="content">
           <DispatchSheet />
         </main>

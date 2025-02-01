@@ -5,7 +5,8 @@
   box-sizing: border-box;
 }
 
-body, html {
+body,
+html {
   width: 100%;
   height: 100%;
   font-family: Arial, sans-serif;
@@ -14,10 +15,14 @@ body, html {
 
 /* Global container for home pages */
 .home-container {
-  padding-top: 60px; /* space for fixed header */
-  min-height: 100vh;
+  border-top: 1px solid red;
   background-color: #f9f9f9;
   text-align: left;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+  margin-top: 64px;
 }
 
 /* Header and Nav Bar */
@@ -28,8 +33,6 @@ body, html {
   background-color: #0056b3;
   color: white;
   padding: 15px 20px;
-  position: fixed;
-  top: 0;
   width: 100%;
   z-index: 1000;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
@@ -67,8 +70,6 @@ body, html {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   padding-left: 20px;
   padding-right: 20px;
-  min-height: 100vh;
-  overflow-y: auto;
 }
 
 /* Tables */
@@ -219,7 +220,7 @@ label {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -233,7 +234,7 @@ label {
   width: 400px;
   max-width: 90%;
   position: relative;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .modal-title {
@@ -259,12 +260,13 @@ label {
 
 /* Responsive Adjustments */
 @media screen and (max-width: 768px) {
+
   .form-button,
   .nav-button {
     font-size: 14px;
     padding: 8px;
   }
-  
+
   .styled-table th,
   .styled-table td {
     padding: 8px;
@@ -277,7 +279,8 @@ label {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f4f4f4; /* matches the global background */
+  background-color: #f4f4f4;
+  /* matches the global background */
 }
 
 /* Adjusting spacing in the form */
@@ -343,7 +346,7 @@ label {
 
 .toast-container:hover .Toastify__toast {
   pointer-events: none;
-  opacity: 0.5; 
+  opacity: 0.5;
 }
 
 .toast-container .Toastify__close-button {
@@ -352,7 +355,7 @@ label {
 }
 
 .hamburger {
-  display: none; 
+  display: none;
   background: none;
   border: none;
   font-size: 24px;
@@ -362,11 +365,13 @@ label {
 
 @media screen and (max-width: 1270px) {
   .nav {
-    display: none; /* initially hide nav on small screens */
+    display: none;
+    /* initially hide nav on small screens */
     flex-direction: column;
     background-color: #0056b3;
     position: absolute;
-    top: 60px; /* below the header */
+    top: 60px;
+    /* below the header */
     left: 0;
     right: 0;
   }
@@ -376,13 +381,16 @@ label {
   }
 
   .hamburger {
-    display: block; /* show hamburger on small screens */
+    display: block;
+    /* show hamburger on small screens */
   }
 
   .nav-button {
     width: 100%;
     text-align: left;
-    border: none; /* remove border for dropdown styling */
-    border-bottom: 1px solid #ffffff55; /* subtle divider between options */
+    border: none;
+    /* remove border for dropdown styling */
+    border-bottom: 1px solid #ffffff55;
+    /* subtle divider between options */
   }
 }

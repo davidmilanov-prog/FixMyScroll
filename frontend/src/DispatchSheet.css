@@ -6,30 +6,32 @@
 
 body {
   width: 100%;
-  overflow-x: hidden;
-  overflow-y: hidden;
+  position: relative;
+  overflow: hidden;
+  background-color: slateblue;
 }
 
 .ag-cell-data-changed {
   --ag-value-change-value-highlight-background-color: #00ff804e !important;
 }
 
-.ag-center-cols-viewport {
+/* .ag-center-cols-viewport {
   min-height: 0px !important;
-}
+} */
 
 .ag-theme-alpine .ag-root-wrapper {
   border: none !important;
 }
 
-.MuiBox-root {
+/* .MuiBox-root {
   margin-top: 0px !important;
   padding-top: 0px !important;
   min-height: 0px !important;
-}
+  position: relative;
+} */
 
 .MuiToolbar-root {
-  min-height: 0px !important;
+  /* min-height: 0px !important; */
 }
 
 .main-day-grid .ag-header {
@@ -57,7 +59,7 @@ body {
 }
 
 .ag-hidden {
-  height: 0px !important;
+  /* height: 0px !important; */
 }
 
 .ag-row-pinned {
@@ -80,9 +82,9 @@ body {
 }
 
 .ag-theme-alpine .ag-cell-inline-editing .ag-cell-edit-input {
-  width: 100% !important;
+  /* width: 100% !important;
   height: 100% !important;
-  box-sizing: border-box;
+  box-sizing: border-box; */
 }
 
 .MuiTab-root {
@@ -181,4 +183,13 @@ body {
 
 .ag-picker-expanded {
   width: 100px !important;
+}
+
+
+/* added css */
+/* top tabs */
+.ag-center-cols-viewport {}
+
+.scrollable-container .scrollable-container-tabs {
+  height: auto;
 }

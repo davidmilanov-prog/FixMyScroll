@@ -2,6 +2,7 @@ import React, {
   useState,
   useMemo,
 } from 'react';
+
 import {
   Box,
   Toolbar,
@@ -10,8 +11,10 @@ import {
   Popover,
   Tabs,
   Tab,
-  IconButton
+  IconButton,
+
 } from '@mui/material';
+
 import UndoIcon from '@mui/icons-material/Undo';
 import RedoIcon from '@mui/icons-material/Redo';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -91,15 +94,15 @@ const DaySection = React.memo(function DaySection({
       domLayout: 'autoHeight',
       rowDragManaged: true,
     }),
-    [defaultColDef]
+    [ defaultColDef ]
   );
   const addDummyRows = (rows, type = 'default') => {
     const initialRows = Array.isArray(rows) ? rows : [];
     const dummyRows = Array.from({ length: 20 }, (_, index) => ({
-      id: `dummy-${type}-${index}`,
+      id: `dummy-${ type }-${ index }`,
       isEmpty: true,
     }));
-    return [...initialRows, ...dummyRows];
+    return [ ...initialRows, ...dummyRows ];
   };
   return (
     <Box
@@ -114,47 +117,43 @@ const DaySection = React.memo(function DaySection({
         maxWidth: '2000px',
       }}
     >
+
       <Box
         sx={{
-          position: 'sticky',
+          width: '49px',
           display: 'flex',
-          left: 0,
-          zIndex: 998,
-          width: '150px',
+          alignItems: 'center',
+          justifyContent: 'center',
+          cursor: 'pointer',
+          borderRight: '1px solid gray',
+          backgroundColor: '#fff',
+          position: 'sticky',
+          left: '0',
+          zIndex: 1
         }}
       >
-        <Box
-          sx={{
-            width: '49px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            cursor: 'pointer',
-            borderRight: '1px solid gray',
-          }}
+        <Typography
+          variant="caption"
+          sx={{ fontSize: '0.8rem', color: 'black', height: '20px !important' }}
         >
-          <Typography
-            variant="caption"
-            sx={{ fontSize: '0.8rem', color: 'black', height: '20px !important' }}
-          >
-            Day
-          </Typography>
-        </Box>
+          Day
+        </Typography>
+      </Box>
 
-        {/* DRIVERS GRID */}
-        <Box
-          className={`ag-theme-alpine no-header-day-grid`}
-          sx={{ width: '98px', borderRight: '3px solid cyan', minHeight: '20px !important' }}
-        >
 
-          <AgGridReact
-            {...sharedGridOptions}
-            getRowId={(params) => String(params.data.id)}
-            rowData={addDummyRows(finalDriverRows, 'driver')}
-            columnDefs={driversColumnDefs}
-            theme={theme}
-          />
-        </Box>
+      {/* DRIVERS GRID */}
+      <Box
+        className={`ag-theme-alpine no-header-day-grid`}
+        sx={{ width: '98px', borderRight: '3px solid cyan', minHeight: '20px !important' }}
+      >
+
+        <AgGridReact
+          {...sharedGridOptions}
+          getRowId={(params) => String(params.data.id)}
+          rowData={addDummyRows(finalDriverRows, 'driver')}
+          columnDefs={driversColumnDefs}
+          theme={theme}
+        />
       </Box>
 
       {/* OUTBOUND GRID */}
@@ -190,8 +189,8 @@ const DaySection = React.memo(function DaySection({
 });
 
 const DispatchSheet = () => {
-  const [showSunday, setShowSunday] = useState(true);
-  const [showSaturday, setShowSaturday] = useState(true);
+  const [ showSunday, setShowSunday ] = useState(true);
+  const [ showSaturday, setShowSaturday ] = useState(true);
   const theme = useMemo(() => {
     return myTheme;
   }, []);
@@ -205,7 +204,7 @@ const DispatchSheet = () => {
       pinnedRowCellHeight: 20,
       cellStyle: (params) => {
         const { data, colDef } = params;
-        const customStyles = data?.styles?.[colDef.field] || {};
+        const customStyles = data?.styles?.[ colDef.field ] || {};
 
         return {
           padding: '4px',
@@ -261,37 +260,23 @@ const DispatchSheet = () => {
     },
   ], []);
 
-  const finalDays = [0, 1, 2, 3, 4, 5, 6];
+  const finalDays = [ 0, 1, 2, 3, 4, 5, 6 ];
 
   return (
-    <Box sx={{
-      height: 'calc(100vh + 208px)',
-    }}>
-      <Box
-        sx={{
-          width: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-          position: 'relative',
-          marginTop: '100px',
-          paddingTop: '66px !important'
-        }}
-      >
+    <Box>
+      <Box >
         <Box id="dispatchNavBar">
           {/* Top bar (row 1) */}
           <Toolbar
             sx={{
-              position: 'fixed',
-              top: 60,
               width: '100%',
-              height: 30,
               backgroundColor: '#f5f5f5',
               borderBottom: '1px solid #ccc',
-              zIndex: 1000,
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
-              fontSize: 'small'
+              fontSize: 'small',
+              minHeight: 'auto !important'
             }}
           >
             <Typography variant="h6">Dispatch Sheet - Date</Typography>
@@ -325,8 +310,6 @@ const DispatchSheet = () => {
           {/* Second bar (row 2) */}
           <Toolbar
             sx={{
-              position: 'fixed',
-              top: 90,
               width: '100%',
               height: 40,
               backgroundColor: '#fff',
@@ -334,7 +317,8 @@ const DispatchSheet = () => {
               zIndex: 1000,
               display: 'flex',
               alignItems: 'center',
-              paddingX: 1
+              paddingX: 1,
+              minHeight: 'auto !important'
             }}
           >
             {/* LEFT SIDE ICONS */}
@@ -369,36 +353,53 @@ const DispatchSheet = () => {
           </Popover>
         </Box>
       </Box>
-      <Box sx={{ height: '100%' }}>
-        <Box sx={{
-          display: 'flex', flexDirection: 'row', width: '100%',
-          position: 'sticky !important',
-          top: 66,
-          zIndex: 999,
-          backgroundColor: 'white !important',
-          minWidth: '2000px',
-          maxWidth: '2000px'
+
+      {/* mid content */}
+
+      <Box className="scrollable-container" sx={{
+        height: '100%',
+        position: 'relative',
+        height: 'calc(100vh - 175px)',
+        overflow: 'scroll',
+        position: 'relative',
+        display: 'block'
+      }}>
+
+        <Box className='scrollable-container-tabs' sx={{
+          width: '100%',
+          display: 'flex',
+          position: 'sticky',
+          top: '0',
+          zIndex: 2,
         }}>
           <Box sx={{
-            position: 'sticky !important',
-            left: 0,
-            zIndex: 999,
             display: 'flex',
+            flexDirection: 'row',
             backgroundColor: 'white !important',
+            minWidth: '2000px'
           }}>
             <Box sx={{
-              width: '49px',
-              backgroundColor: 'white', 
-              borderRight: '1px solid gray', borderBottom: '3px solid cyan'
-            }}></Box>
-            <Box sx={{ display: 'flex', flexDirection: 'column', width: '5%' }}>
+              width: '48px',
+              minWidth: '48px',
+              backgroundColor: '#fff',
+              borderRight: '1px solid gray',
+              borderBottom: '3px solid cyan',
+              position: 'sticky',
+              top: '0',
+              left: '0',
+              zIndex: '3',
+            }}>
+            </Box>
+
+            <Box sx={{ display: 'flex', flexDirection: 'column', }}>
               <Typography variant="h6" sx={{ mb: 1, fontSize: '0.8rem', paddingLeft: '10px', marginTop: '4px', marginBottom: '4px' }}>
                 Drivers
               </Typography>
+
               {/* DRIVERS Header Grid */}
               <Box
                 className="ag-theme-alpine main-day-grid"
-                sx={{ width: '98px', borderRight: '3px solid cyan', borderBottom: '3px solid cyan' }}
+                sx={{ width: '96px', borderRight: '3px solid cyan', borderBottom: '3px solid cyan' }}
               >
                 <AgGridReact
                   columnDefs={driversColumnDefs}
@@ -410,65 +411,80 @@ const DispatchSheet = () => {
                 />
               </Box>
             </Box>
-          </Box>
-          {/* OUTBOUND Header Grid */}
-          <Box sx={{ display: 'flex', flexDirection: 'column', width: '47.4%' }}>
 
-            <Typography variant="h6" sx={{ mb: 1, fontSize: '0.8rem', paddingLeft: '10px', marginTop: '4px', marginBottom: '4px' }}>
-              Outbound
-            </Typography>
-            <Box
-              className="ag-theme-alpine main-day-grid"
-              sx={{ width: '100%', borderRight: '3px solid cyan', borderBottom: '3px solid cyan' }}
-            >
-              <AgGridReact
-                columnDefs={outboundColumnDefs}
-                rowData={[]}
-                defaultColDef={defaultColDef}
-                theme={theme}
-                rowHeight={0}
-                domLayout="autoHeight"
-              />
+
+            {/* OUTBOUND Header Grid */}
+            <Box sx={{ display: 'flex', flexDirection: 'column', width: '47.35%;', }}>
+              <Typography variant="h6" sx={{ mb: 1, fontSize: '0.8rem', paddingLeft: '10px', marginTop: '4px', marginBottom: '4px' }}>
+                Outbound
+              </Typography>
+              <Box
+                className="ag-theme-alpine main-day-grid"
+                sx={{ width: '100%', borderRight: '3px solid cyan', borderBottom: '3px solid cyan' }}
+              >
+                <AgGridReact
+                  columnDefs={outboundColumnDefs}
+                  rowData={[]}
+                  defaultColDef={defaultColDef}
+                  theme={theme}
+                  rowHeight={0}
+                  domLayout="autoHeight"
+                />
+              </Box>
             </Box>
-          </Box>
-          {/* INBOUND Header Grid */}
-          <Box sx={{ display: 'flex', flexDirection: 'column', width: '47.35%' }}>
-            <Typography variant="h6" sx={{ mb: 1, fontSize: '0.8rem', paddingLeft: '10px', marginTop: '4px', marginBottom: '4px' }}>
-              Inbound
-            </Typography>
-            <Box
-              className="ag-theme-alpine main-day-grid"
-              sx={{ width: '100%', borderRight: '3px solid cyan', borderBottom: '3px solid cyan' }}
-            >
-              <AgGridReact
-                columnDefs={inboundColumnDefs}
-                rowData={[]}
-                defaultColDef={defaultColDef}
-                rowHeight={0}
-                theme={theme}
-                domLayout="autoHeight"
-              />
+
+            {/* INBOUND Header Grid */}
+            <Box sx={{ display: 'flex', flexDirection: 'column', width: '47.35%;' }}>
+              <Typography variant="h6" sx={{ mb: 1, fontSize: '0.8rem', paddingLeft: '10px', marginTop: '4px', marginBottom: '4px' }}>
+                Inbound
+              </Typography>
+              <Box
+                className="ag-theme-alpine main-day-grid"
+                sx={{ width: '100%', borderRight: '3px solid cyan', borderBottom: '3px solid cyan' }}
+              >
+                <AgGridReact
+                  columnDefs={inboundColumnDefs}
+                  rowData={[]}
+                  defaultColDef={defaultColDef}
+                  rowHeight={0}
+                  theme={theme}
+                  domLayout="autoHeight"
+                />
+              </Box>
+
             </Box>
+
           </Box>
-        </Box>
-        <Box sx={{ paddingBottom: '300px' }}>
-          {finalDays.map(() => {
-            return (
-              <DaySection
-                driversColumnDefs={driversColumnDefs}
-                inboundColumnDefs={inboundColumnDefs}
-                outboundColumnDefs={outboundColumnDefs}
-                defaultColDef={defaultColDef}
-                theme={theme}
-              />
-            )
-          }
-          )}
+
         </Box>
 
+
+        {finalDays.map(() => {
+          return (
+            <DaySection
+              driversColumnDefs={driversColumnDefs}
+              inboundColumnDefs={inboundColumnDefs}
+              outboundColumnDefs={outboundColumnDefs}
+              defaultColDef={defaultColDef}
+              theme={theme}
+            />
+          )
+        }
+        )}
+
+
+      </Box>
+
+
+
+      {/* new box to hold horizontal bar and bottom tabs */}
+      <Box sx={{
+        width: '100%', backgroundColor: 'rgb(250,250,250)', position: 'relative',
+        display: 'block', borderTop: '2px solid rgb(200,200,200)',
+      }}>
         <Box
           sx={{
-            width: '100%', position: 'fixed', bottom: 0, backgroundColor: 'rgb(250,250,250)', zIndex: 2000, borderTop: '2px solid rgb(200,200,200)', display: "flex"
+            display: "flex"
           }}
         >
           <IconButton sx={{ ml: 1, height: '30px' }}>
@@ -495,7 +511,7 @@ const DispatchSheet = () => {
           </Tabs>
         </Box>
       </Box>
-    </Box>
+    </Box >
   );
 };
 
