@@ -1,6 +1,6 @@
 import React, {
   useState,
-  useMemo,
+  useMemo
 } from 'react';
 import {
   Box,
@@ -264,9 +264,7 @@ const DispatchSheet = () => {
   const finalDays = [0, 1, 2, 3, 4, 5, 6];
 
   return (
-    <Box sx={{
-      height: 'calc(100vh + 208px)',
-    }}>
+    <Box>
       <Box
         sx={{
           width: '100%',
@@ -370,10 +368,10 @@ const DispatchSheet = () => {
         </Box>
       </Box>
       <Box sx={{ height: '100%' }}>
+            <div className='fixed-scroll'>
         <Box sx={{
           display: 'flex', flexDirection: 'row', width: '100%',
           position: 'sticky !important',
-          top: 66,
           zIndex: 999,
           backgroundColor: 'white !important',
           minWidth: '2000px',
@@ -451,20 +449,21 @@ const DispatchSheet = () => {
             </Box>
           </Box>
         </Box>
-        <Box sx={{ paddingBottom: '300px' }}>
-          {finalDays.map(() => {
-            return (
-              <DaySection
-                driversColumnDefs={driversColumnDefs}
-                inboundColumnDefs={inboundColumnDefs}
-                outboundColumnDefs={outboundColumnDefs}
-                defaultColDef={defaultColDef}
-                theme={theme}
-              />
-            )
-          }
-          )}
-        </Box>
+          <Box sx={{  }}>
+            {finalDays.map(() => {
+              return (
+                <DaySection
+                  driversColumnDefs={driversColumnDefs}
+                  inboundColumnDefs={inboundColumnDefs}
+                  outboundColumnDefs={outboundColumnDefs}
+                  defaultColDef={defaultColDef}
+                  theme={theme}
+                />
+              )
+            }
+            )}
+          </Box>
+        </div>
 
         <Box
           sx={{
